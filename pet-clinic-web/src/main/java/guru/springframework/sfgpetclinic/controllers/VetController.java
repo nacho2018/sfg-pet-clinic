@@ -17,6 +17,7 @@ public class VetController {
     @RequestMapping({"/vets", "/vets/index", "/vets/index.html"})
     public String listVets(Model model){
 
+        System.out.println("Storing vets...");
         model.addAttribute("vets", this.vetService.findAll());
         return "vets/index";
     }
