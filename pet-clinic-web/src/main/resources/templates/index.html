@@ -1,31 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{fragments/layout :: layout (~{::body},'vets')}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
 <head>
-    <meta charset="UTF-8">
-    <title>Index Page</title>
+    <meta charset="UTF-8"/>
+    <title>Pet Clinic Index</title>
 </head>
 <body>
-<h2 th:text="'List of Vets'">Vets List</h2>
+<h2 th:text="#{welcome}">Welcome</h2>
 
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <td style="width: 150px;" >Id</td>
-        <td style="width: 150px;">First name</td>
-        <td style="width: 150px;">Last name</td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="vet : ${vets}">
-        <td th:text="${vet.id}">1</td>
-        <td th:text="${vet.firstName}">Joe</td>
-        <td th:text="${vet.lastName}">Back</td>
-
-    </tr>
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-md-12">
+        <img class="img-responsive" src="../static/resources/images/pets.png" th:src="@{/resources/images/pets.png}"/>
+    </div>
+</div>
 
 </body>
-
-</html>
+</html></html>
