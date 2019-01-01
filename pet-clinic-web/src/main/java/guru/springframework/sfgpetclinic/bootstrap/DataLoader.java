@@ -29,6 +29,12 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        loadData();
+
+
+    }
+
+    private void loadData() {
         PetType dog = new PetType();
         dog.setName("Dog");
         PetType savedDogPetType = this.petTypeService.save(dog);
@@ -103,9 +109,5 @@ public class DataLoader implements CommandLineRunner {
         this.vetService.save(vet2);
 
         System.out.println("Loaded vets....");
-
-
-
-
     }
 }
