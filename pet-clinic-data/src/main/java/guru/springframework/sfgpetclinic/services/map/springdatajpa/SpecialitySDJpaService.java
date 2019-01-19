@@ -17,6 +17,7 @@ public class SpecialitySDJpaService implements SpecialtyService {
 
     public SpecialitySDJpaService(SpecialityRepository specialityRepository) {
         this.specialityRepository = specialityRepository;
+        System.out.println("SpecialitySDJpaService created");
     }
 
     @Override

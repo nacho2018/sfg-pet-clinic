@@ -16,7 +16,9 @@ public class VetSDJpaService implements VetService {
     private final VetRepository vetRepository;
 
     public VetSDJpaService(VetRepository vetRepository) {
+
         this.vetRepository = vetRepository;
+        System.out.println("VetSDJpaService created");
     }
 
     @Override

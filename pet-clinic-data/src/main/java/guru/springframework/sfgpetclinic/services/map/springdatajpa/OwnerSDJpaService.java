@@ -23,6 +23,8 @@ public class OwnerSDJpaService implements OwnerService {
         this.ownerRepository = ownerRepository;
         this.petRepository = petRepository;
         this.petTypeRepository = petTypeRepository;
+
+        System.out.println("OwnerSDJpaService created");
     }
 
     @Override
@@ -47,6 +49,8 @@ public class OwnerSDJpaService implements OwnerService {
 
     @Override
     public Owner save(Owner object) {
+
+
         return this.ownerRepository.save(object);
     }
 

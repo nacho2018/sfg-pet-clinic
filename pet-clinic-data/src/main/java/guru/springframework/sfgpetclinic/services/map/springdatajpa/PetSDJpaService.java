@@ -16,7 +16,9 @@ public class PetSDJpaService implements PetService {
     private final PetRepository petRepository;
 
     public PetSDJpaService(PetRepository petRepository) {
+
         this.petRepository = petRepository;
+        System.out.println("PetSDJpaService created");
     }
 
     @Override
@@ -34,6 +36,8 @@ public class PetSDJpaService implements PetService {
 
     @Override
     public Pet save(Pet object) {
+
+        System.out.println("Using PetSDJpaService impl. for PetService");
         return this.petRepository.save(object);
     }
 
