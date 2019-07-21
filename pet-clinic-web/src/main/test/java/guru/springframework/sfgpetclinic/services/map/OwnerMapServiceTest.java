@@ -1,13 +1,17 @@
 package guru.springframework.sfgpetclinic.services.map;
 
 import guru.springframework.sfgpetclinic.model.Owner;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.junit.MockitoJUnitRunner;
+
 
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
 
+@RunWith(MockitoJUnitRunner.class)
 class OwnerMapServiceTest {
 
     OwnerMapService ownerMapService;
@@ -15,7 +19,7 @@ class OwnerMapServiceTest {
     final Long ownerId = 1L;
     final String lastName = "Smith";
 
-    @BeforeEach
+    @Before
     void setUp() {
 
         //this is the initialization Spring would do for us
@@ -32,8 +36,8 @@ class OwnerMapServiceTest {
 
         Owner smith = this.ownerMapService.findByLastName(lastName);
 
-        assertNotNull(smith);
-        assertEquals(this.ownerId, smith.getId());
+        Assert.assertNotNull(smith);
+        Assert.assertEquals(this.ownerId, smith.getId());
     }
 
     @Test
@@ -41,21 +45,21 @@ class OwnerMapServiceTest {
 
         Owner smith = this.ownerMapService.findByLastName("foo");
 
-        assertNull(smith);
+        Assert.assertNull(smith);
 
     }
 
     @Test
     void findAll() {
         Set<Owner> ownerSet = ownerMapService.findAll();
-        assertEquals(1, ownerSet.size());
+        Assert.assertEquals(1, ownerSet.size());
     }
 
     @Test
     void findById() {
         Owner owner = ownerMapService.findById(ownerId);
 
-        assertEquals(ownerId, owner.getId());
+        Assert.assertEquals(ownerId, owner.getId());
     }
 
     @Test
@@ -67,7 +71,7 @@ class OwnerMapServiceTest {
 
         Owner saveOwner = ownerMapService.save(owner2);
 
-        assertEquals(id, saveOwner.getId());
+        Assert.assertEquals(id, saveOwner.getId());
 
     }
 
@@ -76,8 +80,8 @@ class OwnerMapServiceTest {
         Owner owner = new Owner();
         Owner savedOwner = ownerMapService.save(owner);
 
-        assertNotNull(savedOwner);
-        assertNotNull(savedOwner.getId());
+        Assert.assertNotNull(savedOwner);
+        Assert.assertNotNull(savedOwner.getId());
     }
 
     @Test
@@ -85,14 +89,14 @@ class OwnerMapServiceTest {
 
         this.ownerMapService.delete(this.ownerMapService.findById(ownerId));
 
-        assertEquals(0, this.ownerMapService.findAll().size());
+        Assert.assertEquals(0, this.ownerMapService.findAll().size());
     }
 
     @Test
     void deleteById() {
         this.ownerMapService.deleteById(ownerId);
 
-        assertEquals(0, this.ownerMapService.findAll().size());
+        Assert.assertEquals(0, this.ownerMapService.findAll().size());
     }
 
 
