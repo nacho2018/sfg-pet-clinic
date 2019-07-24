@@ -12,7 +12,7 @@ import java.util.Set;
 
 
 @RunWith(MockitoJUnitRunner.class)
-class OwnerMapServiceTest {
+public class OwnerMapServiceTest {
 
     OwnerMapService ownerMapService;
     Owner owner;
@@ -20,7 +20,7 @@ class OwnerMapServiceTest {
     final String lastName = "Smith";
 
     @Before
-    void setUp() {
+    public void setUp() {
 
         //this is the initialization Spring would do for us
         ownerMapService = new OwnerMapService(new PetTypeMapService(), new PetMapService());
@@ -32,7 +32,7 @@ class OwnerMapServiceTest {
     }
 
     @Test
-    void findByLastName() {
+    public void findByLastName() {
 
         Owner smith = this.ownerMapService.findByLastName(lastName);
 
@@ -41,7 +41,7 @@ class OwnerMapServiceTest {
     }
 
     @Test
-    void findByLastNameNotFound() {
+    public void findByLastNameNotFound() {
 
         Owner smith = this.ownerMapService.findByLastName("foo");
 
@@ -50,20 +50,20 @@ class OwnerMapServiceTest {
     }
 
     @Test
-    void findAll() {
+    public void findAll() {
         Set<Owner> ownerSet = ownerMapService.findAll();
         Assert.assertEquals(1, ownerSet.size());
     }
 
     @Test
-    void findById() {
+    public void findById() {
         Owner owner = ownerMapService.findById(ownerId);
 
         Assert.assertEquals(ownerId, owner.getId());
     }
 
     @Test
-    void saveExistingId() {
+    public void saveExistingId() {
         final Long id = 2L;
 
         Owner owner2 = new Owner();
@@ -76,7 +76,7 @@ class OwnerMapServiceTest {
     }
 
     @Test
-    void saveNoId() {
+    public void saveNoId() {
         Owner owner = new Owner();
         Owner savedOwner = ownerMapService.save(owner);
 
@@ -85,7 +85,7 @@ class OwnerMapServiceTest {
     }
 
     @Test
-    void delete() {
+    public void delete() {
 
         this.ownerMapService.delete(this.ownerMapService.findById(ownerId));
 
@@ -93,7 +93,7 @@ class OwnerMapServiceTest {
     }
 
     @Test
-    void deleteById() {
+    public void deleteById() {
         this.ownerMapService.deleteById(ownerId);
 
         Assert.assertEquals(0, this.ownerMapService.findAll().size());
